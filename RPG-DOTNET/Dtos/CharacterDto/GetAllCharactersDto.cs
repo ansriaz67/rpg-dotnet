@@ -1,4 +1,6 @@
-﻿using RPG_DOTNET.Models;
+﻿using RPG_DOTNET.Dtos.SkillDto;
+using RPG_DOTNET.Dtos.WeaponDto;
+using RPG_DOTNET.Enum;
 
 namespace RPG_DOTNET.Dtos.CharacterDto
 {
@@ -11,5 +13,7 @@ namespace RPG_DOTNET.Dtos.CharacterDto
         public int Defence { get; set; } = 10;
         public int Intelligence { get; set; } = 10;
         public RpgClass Class { get; set; } = RpgClass.Knight;
+        public GetWeaponDto Weapon { get; set; }
+        public List<GetSkillDto> SkillDtos { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using RPG_DOTNET.Models;
+﻿using RPG_DOTNET.Enum;
 
 namespace RPG_DOTNET.Dtos.CharacterDto
 {
