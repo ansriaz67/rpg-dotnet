@@ -127,7 +127,7 @@ namespace RPG_DOTNET.Services.CharacterServices
             ServiceResponce<IEnumerable<GetAllCharactersDto>> serviceResponce = new ServiceResponce<IEnumerable<GetAllCharactersDto>>();
             try
             {
-                if (searchText != null && searchText == "")
+                if (searchText != null && searchText != "")
                 {
                 List<Character> characters = await _context.Characters.Where(s => s.Name.Contains(searchText)).ToListAsync();
                 serviceResponce.Data = _mapper.Map<IEnumerable<GetAllCharactersDto>>(characters);
@@ -152,8 +152,16 @@ namespace RPG_DOTNET.Services.CharacterServices
             ServiceResponce<List<GetAllCharactersDto>> serviceResponce = new ServiceResponce<List<GetAllCharactersDto>>();
             try
             {
+                if(sortingText == "name_desc")
+                {
                     List<Character> characters = await _context.Characters.OrderByDescending(c => c.Name).ToListAsync();
                     serviceResponce.Data = _mapper.Map<List<GetAllCharactersDto>>(characters);
+                }
+                else
+                {
+                    List<Character> characters = await _context.Characters.OrderBy(c => c.Name).ToListAsync();
+                    serviceResponce.Data = _mapper.Map<List<GetAllCharactersDto>>(characters);
+                }
             }
             catch (Exception ex)
             {
